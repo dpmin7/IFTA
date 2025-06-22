@@ -10,16 +10,16 @@
 ## Rationale
 
 모든 항공기에 대해서 충돌 위험성 평가 시 CPA 연산이 필요하지 않은 항공기에 대해서도 모두 계산하는 것은 효율적이지 못합니다. 이에 필터 설계가 필요했고 관련 내용을 Experiment4에 설명했습니다. 필터와 CPA 연산 모듈은 아래와 같은 구조로 설계 되어 있습니다.
-<img src="images/adr004-pipefilter1-diagram.png" width="400">
+<img src="../images/adr004-pipefilter1-diagram.png" width="400">
 
 case1) 필터 기능 구현에 strategy 패턴을 사용하지 않는 경우
 - 패턴을 사용하지 않고 필터를 변경하거나 추가하는 경우 필터를 사용하는 클라이언트 코드가 여러 클래스에 의존성을 갖고 클라이언트 코드 수정이 많아질 수 있음
-<img src="images/adr004-normalfilter-diagram.png" width="400">
+<img src="../images/adr004-normalfilter-diagram.png" width="400">
 
 case2) 필터 기능 구현에 strategy 패턴을 사용하는 경우
 - 필터를 사용하는 클라이언트 코드의 수정이 최소화 될 수 있으며 새로운 필터를 추가할 때 IRangeFilter 인터페이스에 구조를 맞추면 된다.
 
-<img src="images/adr004-pattern_filter-diagram.png" width="400">
+<img src="../images/adr004-pattern_filter-diagram.png" width="400">
  
 ## Status
 Proposed 
