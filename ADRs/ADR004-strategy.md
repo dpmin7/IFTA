@@ -14,7 +14,7 @@ By abstracting the filter logic through an interface, the client code depends on
 
 It is inefficient to perform CPA calculations for all aircraft, including those that are not at risk of collision. Thus, we needed to design a filter, as described in Experiment 4. The filter and CPA computation modules are designed with the following structure:
 
-<img src="images/adr004-pipefilter1-diagram.png" width="400">
+<img src="../images/adr004-pipefilter1-diagram.png" width="400">
 
 **Case 1) When the strategy pattern is not used to implement filter functionality**
 
