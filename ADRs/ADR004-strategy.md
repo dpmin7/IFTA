@@ -21,14 +21,14 @@ It is inefficient to perform CPA calculations for all aircraft, including those 
 - If the pattern is not used, modifying or adding filters causes the client code to depend on multiple filter classes, which increases the amount of modification required in the client.
     
 
-<img src="images/adr004-normalfilter-diagram.png" width="400">
+<img src="../images/adr004-normalfilter-diagram.png" width="400">
 
 **Case 2) When the strategy pattern is used to implement filter functionality**
 
 - Client code modifications are minimized, and new filters can be added by simply conforming to the `IRangeFilter` interface.
     
 
-<img src="images/adr004-pattern_filter-diagram.png" width="400">
+<img src="../images/adr004-pattern_filter-diagram.png" width="400">
 
 ## Status
 
