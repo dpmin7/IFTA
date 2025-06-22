@@ -55,8 +55,8 @@ altogether correspond to the main capabilities provided by the Intelligent Fligh
 </tr>
 <tr>
     <td colspan="2" align="center">
-        <a href="architecture/replenish-microservice-eda-view.md">Replenisher - microservice and EDA view<br>
-        <img src="images/replenish-microservice-eda-view-primary.jpg" width="200"><img src="images/replenish-microservices-eda-state-machine.png" width="200">
+        <a href="architecture/resilient-sdr-monitoring-and-recovery-view.md">SDR system (a.k.a Flight Tracker) - Resilient SDR monitoring and recovery view<br>
+        <img src="images/flight-tracker-primary.png" width="200"><img src="images/flight-tracker-sequence.png" width="200">
         </a>
     </td>
 </tr>
