@@ -1,34 +1,31 @@
 # ADR 004: Use Strategy Pattern for Efficient CPA Computation
 
-We received a requirement stating that the system must support easy extensibility of its functions. Additionally, after consulting with Solvelt Inc., we were advised to define whether the CPA (Closest Point of Approach) functionality should operate across the entire map (i.e., for all aircraft) or only within a specific region. Through Experiment 4, we confirmed that performing CPA calculations for all aircraft incurs significant computation time. Therefore, we designed a filter to exclude aircraft that are sufficiently distant and do not require CPA computation based on their current positions.
-
-While designing the filter module, we aimed to make it easy for users to modify or add new types of filters.
+We received a requirement that the system should support easy extensibility of its functions. Additionally, we consulted with Solvelt Inc., who advised us to define whether the CPA (Closest Point of Approach) computation should be performed for the entire map (i.e., all aircraft) or only for a specific region. Through Experiment 4, we confirmed that performing CPA calculations for all aircraft incurs significant computation time. Therefore, we designed a filtering mechanism that excludes aircraft that are sufficiently distant based on their current positions, as CPA computation is unnecessary for them. When designing the filter module, it was necessary to make it easy for users to modify or add different types of filters.
 
 ## Decision
 
-We will adopt the [Strategy Pattern](https://en.wikipedia.org/wiki/Strategy_pattern) to enable flexible modification and extension of filters.
-
-By abstracting the filter logic through an interface, the client code depends only on that interface, and the implementation code realizes it. Users can create and apply new filters by implementing the `IRangeFilter` interface.
+We will use the [Strategy Pattern](https://en.wikipedia.org/wiki/Strategy_pattern) to allow flexible modification and addition of filters.  
+By abstracting the logic using an interface, the client code depends only on that interface, and the implementation classes realize the interface.  
+Users can create and apply new filters by implementing the `IRangeFilter` interface.
 
 ## Rationale
 
-It is inefficient to perform CPA calculations for all aircraft, including those that are not at risk of collision. Thus, we needed to design a filter, as described in Experiment 4. The filter and CPA computation modules are designed with the following structure:
+It is inefficient to perform CPA calculations for all aircraft, including those that are not at risk of collision.  
+Thus, a filter design was necessary, and the details were described in Experiment 4.
 
-<img src="../images/adr004-pipefilter1-diagram.png" width="400">
+**case1) When using the Strategy Pattern to implement the filter functionality**
 
-**Case 1) When the strategy pattern is not used to implement filter functionality**
-
-- If the pattern is not used, modifying or adding filters causes the client code to depend on multiple filter classes, which increases the amount of modification required in the client.
+- The client code that uses the filter requires minimal changes, and new filters can be easily added by implementing the `IRangeFilter` interface.
+    
+- Additionally, **filter algorithms can be dynamically switched at runtime**, enabling flexible application of different strategies depending on the situation.
     
 
-<img src="../images/adr004-normalfilter-diagram.png" width="400">
+**case2) When using a Static Utility approach instead**
 
-**Case 2) When the strategy pattern is used to implement filter functionality**
-
-- Client code modifications are minimized, and new filters can be added by simply conforming to the `IRangeFilter` interface.
+- The filtering logic is implemented using static methods with conditional statements, and adding new filters requires modifying the utility method itself.
     
-
-<img src="../images/adr004-pattern_filter-diagram.png" width="400">
+- As a result, the client code becomes tightly coupled to the static utility class, leading to decreased maintainability and scalability.
+    
 
 ## Status
 
@@ -36,6 +33,6 @@ Proposed
 
 ## Consequences
 
-- When a filter needs to be changed, modifications to the client code are minimized.
+- When a filter needs to be changed, the modifications to client code are minimized.
     
-- New filters can be added by implementing the `IRangeFilter` interface.
+- New filters can be added simply by implementing the `IRangeFilter` interface.
