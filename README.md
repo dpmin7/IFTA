@@ -78,7 +78,7 @@ The linked ADRs below record the main architecture decisions regarding the propo
 - ADR 002 - [Use ping/Echo and retry tactic](ADRs/ADR002-ping-echo-retry.md)
 - ADR 003 - [Use C# envinronment](ADRs/ADR003-cs.md)
 - ADR 004 - [Use strategy pattern](ADRs/ADR004-strategy.md)
-- ADR 005 - [Use heartbeat tactic](ADRs/ADR005-heartbeat.md)
+- ADR 005 - [Use polling-based monitoring](ADRs/ADR005-polling.md)
 
 <sub>***Note***: we used [this ADR template](https://github.com/pmerson/ADR-template/blob/master/ADR-template.md).</sub>
 

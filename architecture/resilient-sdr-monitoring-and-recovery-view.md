@@ -1,5 +1,5 @@
 # Resilient SDR Monitoring and Recovery View  
-This view documents the runtime structure of the Raspberry Pi-based Flight Tracker system. It focuses on how the system ensures continuous SDR-based flight data capture and recovery from device-level faults using a heartbeat monitoring strategy.
+This view documents the runtime structure of the Raspberry Pi-based Flight Tracker system. It focuses on how the system ensures continuous SDR-based flight data capture and recovery from device-level faults using a polling-based monitoring strategy.
 
 ![Runtime View - Resilient SDR Monitoring](../images/flight-tracker-primary.png)
 
@@ -35,10 +35,10 @@ This view documents the runtime structure of the Raspberry Pi-based Flight Track
   - Checks SDR connectivity every 3 seconds.
   - If disconnected, kills both `dump1090` and `adsbhub.sh`.
   - Once SDR is reconnected, `systemd` resumes services automatically.
-- This loop creates a resilient, self-healing architecture using a heartbeat tactic.
+- This loop creates a resilient, self-healing architecture using a polling-based monitoring.
 
 ## Related ADRs
-- [Use Heartbeat tactic](../ADRs/ADR005-heartbeat.md)
+- [Use Heartbeat tactic](../ADRs/ADR005-polling.md)
 
 ## Related Views
 N/A
