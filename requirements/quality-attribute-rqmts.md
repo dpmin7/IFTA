@@ -7,7 +7,7 @@ in a testable/measurable format; and *(ii)* prioritizing the requirements.
 In this document, we listed a few requirements that we interviewed with SolveIt and *assumed* would be important for the system.  
 
 ## *Performance - response time* 
-- When a user selects(hook) an aircraft on the Remote User Interface (RUI) during SBS connect mode, the system must display the result to the user within 0.1 seconds1 even aircrafts increases to up to 5000.
+- When a user selects(hook) an aircraft on the Remote User Interface (RUI) during SBS connect mode, the system must display the result to the user within 0.1 seconds even aircrafts increases to up to 5000.
 
 ## *Availability - resilience* 
 - Once the Raspberry Pi flight tracker or ADSB-hub returns to a normal state from failure, the RUI must resume service continuity within a minute without requiring any manual intervention.
