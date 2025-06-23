@@ -63,11 +63,11 @@ altogether correspond to the main capabilities provided by the Intelligent Fligh
 </tr>
 </table>
 
-Finally, we have a deployment view that describes Windows UI program(RUI) and Linux server program(Flight Tracker).    
+Finally, we have a deployment view that describes Windows UI program (RUI) and Linux server program (Flight Tracker).
 
 <table>
-<tr><td align="center"><a href="architecture/deployment-view.md">Deployment view<br>
-<img src="images/deployment-view-primary.jpg" width="200"></a></td></tr>
+<tr><td align="center"><a href="architecture/deployment-view.md">Intelligent Flight Tracking Assistant - Deployment view<br>
+<img src="images/deployment-diagram.png" width="200"></a></td></tr>
 </table>
 
 Our architecture views were documented following a lightweight [view template available here](https://github.com/pmerson/architecture-view-template). 
