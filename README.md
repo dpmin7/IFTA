@@ -76,7 +76,7 @@ Our architecture views were documented following a lightweight [view template av
 The linked ADRs below record the main architecture decisions regarding the proposed design, including their context and rationale.
 
 - ADR 001 - [Use VBO method](ADRs/ADR001-maintain-multiple-copies-of-data.md)
-- ADR 002 - [Use ping/Echo and retry tactic](ADRs/ADR002-ping-echo-retry.md)
+- ADR 002 - [Use ping/echo tactic](ADRs/ADR002-ping-echo.md)
 - ADR 003 - [Use C#/WPF envinronment](ADRs/ADR003-use-cs.md)
 - ADR 004 - [Use strategy pattern](ADRs/ADR004-strategy.md)
 - ADR 005 - [Use polling-based monitoring](ADRs/ADR005-polling.md)
