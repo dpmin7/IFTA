@@ -40,9 +40,10 @@ altogether correspond to the main capabilities provided by the Intelligent Fligh
 
 <table>
 <tr>
-    <td align="center"><a href="architecture/user-account-mgmt-microservice-view.md">User Account Management - microservice view<br><img src="images/user-account-mgmt-microservice-view-primary.jpg" width="200"></a></td>
-    <td align="center"><a href="architecture/catalog-microservice-view.md">Catalog - microservice view<br>
-        <img src="images/catalog-microservice-view-primary.jpg" width="200"></a>
+    <td colspan="2" align="center">
+        <a href="architecture/mvc-architecture-view.md">Aircraft Tracking - MVC architecture view<br>
+        <img src="images/mvc-architecture-primary.png" width="200">
+        </a>
     </td>
 </tr>
 <tr>
