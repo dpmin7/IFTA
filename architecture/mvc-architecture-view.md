@@ -51,17 +51,21 @@ This architecture view describes how the Intelligent Flight Tracking Assistant s
 
 ### Sequence of Aircraft Tracking (Green #1-7 in diagram):
 1. `User` click the connect button.
-1. `MainView Handler` triggers connection via `TCP Connector`.
-2. `TCP Connector` receives SBS messages.
-3. `SBS messages` sent to `Aircraft Manager`.
-3. `SBS Format Parser` decodes messages.
+2. `MainView Handler` triggers connection via `TCP Connector`.
+  - The sequence for TCP reconnecting for resilient is as follows:
+  ![TCP Connection sequence Diagram](../images/tcp-connection-sequence-diagram.png)
+3. `TCP Connector` receives SBS messages.
+4. `SBS messages` sent to `Aircraft Manager`.
+5. `SBS Format Parser` decodes messages.
 6. Aircraft table is updated.
-7. `Views` query and display aircraft on screen. the rendering sequence is as follows:
+7. `Views` query and display aircraft on screen
+  - The rendering sequence is as follows:
   ![Rendering Sequence Diagram](../images/rendering-sequence-diagram.png)
 
 ### Sequence of Aircraft Alarm (Red #1-2):
 - `CPA` monitors aircraft position changes.
-- When criteria are met (e.g., collision risk), it sends alarm to `Views`. the CPA computation sequence is as follows:
+- When criteria are met (e.g., collision risk), it sends alarm to `Views`
+  - The CPA computation sequence is as follows:
   ![CPA Computation Diagram](../images/cpa-activity-diagram.png)
 
 ### Sequence of Map Tile Updating (Purple #1-2):
@@ -71,7 +75,9 @@ This architecture view describes how the Intelligent Flight Tracking Assistant s
 
 ## Related ADRs
 - ADR 001 - [Use VBO method](../ADRs/ADR001-maintain-multiple-copies-of-data.md)
+- ADR 002 - [Use ping/echo tactic](../ADRs/ADR002-ping-echo.md)
 - ADR 003 - [Use C#/WPF envinronment](../ADRs/ADR003-use-cs.md)
+- ADR 004 - [Use strategy pattern](../ADRs/ADR004-strategy.md)
 
 ## Related Views
 N/A
