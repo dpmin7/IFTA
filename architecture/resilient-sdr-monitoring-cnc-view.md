@@ -38,7 +38,7 @@ This view documents the runtime structure of the Raspberry Pi-based Flight Track
 - This loop creates a resilient, self-healing architecture using a polling-based monitoring.
 
 ## Related ADRs
-- [Use Heartbeat tactic](../ADRs/ADR005-polling.md)
+- ADR 005 - [Use polling-based monitoring](../ADRs/ADR005-polling.md)
 
 ## Related Views
 N/A

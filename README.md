@@ -56,7 +56,7 @@ altogether correspond to the main capabilities provided by the Intelligent Fligh
 </tr>
 <tr>
     <td colspan="2" align="center">
-        <a href="architecture/resilient-sdr-monitoring-and-recovery-view.md">SDR system (a.k.a Flight Tracker) - Resilient SDR monitoring and recovery view<br>
+        <a href="architecture/resilient-sdr-monitoring-cnc-view.md">SDR system (a.k.a Flight Tracker) - Resilient SDR monitoring C&C view<br>
         <img src="images/flight-tracker-primary.png" width="200"><img src="images/flight-tracker-sequence.png" width="200">
         </a>
     </td>
