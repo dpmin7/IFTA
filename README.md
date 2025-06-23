@@ -41,7 +41,7 @@ altogether correspond to the main capabilities provided by the Intelligent Fligh
 <table>
 <tr>
     <td colspan="3" align="center">
-        <a href="architecture/mvc-architecture-view.md">Aircraft Tracking - MVC architecture view<br>
+        <a href="architecture/mvc-architecture-view.md">Aircraft Tracking RUI - MVC architecture style C&C view<br>
         <img src="images/mvc-architecture-primary.png" width="200">
         </a>
     </td>

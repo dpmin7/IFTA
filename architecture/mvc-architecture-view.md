@@ -1,8 +1,8 @@
-# MVC Architecture View of the Intelligent Flight Tracking Assistant
+# MVC Architecture Style C&C View of the Intelligent Flight Tracking Assistant
 
 This architecture view describes how the Intelligent Flight Tracking Assistant system applies the Model-View-Controller (MVC) pattern to render aircraft and map information to users. It highlights the separation of concerns among internal components responsible for the data model, control logic, and user interface. The view illustrates how user interactions trigger updates to aircraft and map data and how these changes propagate through the system in real time.
 
-![MVC Architecture View Diagram](../images/mvc-architecture-primary.png)
+![MVC Architecture C&C Diagram](../images/mvc-architecture-primary.png)
 
 ## Element Catalog
 
