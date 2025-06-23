@@ -40,22 +40,25 @@ altogether correspond to the main capabilities provided by the Intelligent Fligh
 
 <table>
 <tr>
-    <td colspan="2" align="center">
+    <td colspan="3" align="center">
         <a href="architecture/mvc-architecture-view.md">Aircraft Tracking - MVC architecture view<br>
         <img src="images/mvc-architecture-primary.png" width="200">
         </a>
     </td>
 </tr>
 <tr>
-    <td align="center"><a href="architecture/tbd-view.md">TBD - view<br>
-        <img src="images/tbd.png" width="200"></a>
+    <td align="center"><a href="architecture/mvc-architecture-view.md#sequence-of-aircraft-tracking-green-1-7-in-diagram">TCP connection recovery sequence diagram<br>
+        <img src="images/tcp-connection-sequence-diagram.png" width="200"></a>
     </td>
-    <td align="center" valign="middle"><a href="architecture/tbd-view.md">TBD - view<br>
-        <img src="images/tbd.png" width="200"></a>
+    <td align="center" valign="middle"><a href="architecture/mvc-architecture-view.md#sequence-of-aircraft-tracking-green-1-7-in-diagram">Graphic rendering sequence diagram<br>
+        <img src="images/rendering-sequence-diagram.png" width="200"></a>
+    </td>
+    <td align="center" valign="middle"><a href="architecture/mvc-architecture-view.md#sequence-of-aircraft-alarm-red-1-2">CPA computation activity diagram<br>
+        <img src="images/cpa-activity-diagram.png" width="200"></a>
     </td>
 </tr>
 <tr>
-    <td colspan="2" align="center">
+    <td colspan="3" align="center" valign="middle">
         <a href="architecture/resilient-sdr-monitoring-cnc-view.md">SDR system (a.k.a Flight Tracker) - Resilient SDR monitoring C&C view<br>
         <img src="images/flight-tracker-primary.png" width="200"><img src="images/flight-tracker-sequence.png" width="200">
         </a>
