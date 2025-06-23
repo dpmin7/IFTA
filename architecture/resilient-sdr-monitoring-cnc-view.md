@@ -1,4 +1,4 @@
-# Resilient SDR Monitoring and Recovery View  
+# Resilient SDR Monitoring and Recovery C&C View  
 This view documents the runtime structure of the Raspberry Pi-based Flight Tracker system. It focuses on how the system ensures continuous SDR-based flight data capture and recovery from device-level faults using a polling-based monitoring strategy.
 
 ![Runtime View - Resilient SDR Monitoring](../images/flight-tracker-primary.png)
