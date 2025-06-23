@@ -1,38 +1,35 @@
-# ADR 004: Use Strategy Pattern for Efficient CPA Computation
+# ADR 004: Use Filters for Efficient CPA Computation
 
-We received a requirement that the system should support easy extensibility of its functions. Additionally, we consulted with Solvelt Inc., who advised us to define whether the CPA (Closest Point of Approach) computation should be performed for the entire map (i.e., all aircraft) or only for a specific region. Through Experiment 4, we confirmed that performing CPA calculations for all aircraft incurs significant computation time. Therefore, we designed a filtering mechanism that excludes aircraft that are sufficiently distant based on their current positions, as CPA computation is unnecessary for them. When designing the filter module, it was necessary to make it easy for users to modify or add different types of filters.
+## Context
+
+Our system is required to compute CPA (Closest Point of Approach) between aircraft to assess potential collision risks. Based on communication with the customer, the CPA function may be applied either to all aircraft globally or to aircraft within a selected region.
+In **Experiment 4**, computing CPA for all aircraft (without any filtering) took **13.48 seconds**, which is not suitable for real-time or near-real-time use. To reduce unnecessary computation, we applied filtering techniques and observed significantly improved performance.
 
 ## Decision
 
-We will use the [Strategy Pattern](https://en.wikipedia.org/wiki/Strategy_pattern) to allow flexible modification and addition of filters.  
-By abstracting the logic using an interface, the client code depends only on that interface, and the implementation classes realize the interface.  
-Users can create and apply new filters by implementing the `IRangeFilter` interface.
+We will apply **filters using aircraft's latitude, longitude, and altitude** to reduce the number of aircraft pairs for which CPA must be computed.
 
 ## Rationale
 
-It is inefficient to perform CPA calculations for all aircraft, including those that are not at risk of collision.  
-Thus, a filter design was necessary, and the details were described in Experiment 4.
+Performing CPA computations between all aircraft regardless of their relative positions is highly inefficient, especially in high-density traffic scenarios.
 
-**case1) When using the Strategy Pattern to implement the filter functionality**
+We compared two alternative approaches to reduce computation:
 
-- The client code that uses the filter requires minimal changes, and new filters can be easily added by implementing the `IRangeFilter` interface.
-    
-- Additionally, **filter algorithms can be dynamically switched at runtime**, enabling flexible application of different strategies depending on the situation.
-    
+1. **Filtering aircraft that do not require CPA calculation**
+   - *Advantages*: Significantly reduces computation; high extensibility (can add various filters like range, altitude difference, region-based, etc.)
+   -  *Disadvantages*: If filter thresholds are too conservative, there's a risk of missing valid CPA cases.
 
-**case2) When using a Static Utility approach instead**
+2. **Computing CPA only for newly updated aircraft**
+   - *Advantages*: Reduces computations when updates are sparse.
+   -  *Disadvantages*: If many aircraft update simultaneously, CPA must be calculated between updated aircraft and all others, potentially leading to more computations than filtered approach. Also, risk of missing mutual CPA between updated aircraft unless handled carefully.
 
-- The filtering logic is implemented using static methods with conditional statements, and adding new filters requires modifying the utility method itself.
-    
-- As a result, the client code becomes tightly coupled to the static utility class, leading to decreased maintainability and scalability.
-    
+Given these trade-offs, the filter-based approach provides a **more consistent and scalable** solution for both periodic and real-time CPA computation.
 
 ## Status
-
 Proposed
 
 ## Consequences
 
-- When a filter needs to be changed, the modifications to client code are minimized.
-    
-- New filters can be added simply by implementing the `IRangeFilter` interface.
+- Filtering leads to a simpler and more efficient implementation, especially for **periodic CPA evaluations**.
+- Allows for future extension by adding modular filter strategies (e.g., by distance, altitude, airspace region).
+- Requires careful tuning of filter thresholds to avoid overlooking potential collision candidates.
