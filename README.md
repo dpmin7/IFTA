@@ -47,11 +47,11 @@ altogether correspond to the main capabilities provided by the Intelligent Fligh
     </td>
 </tr>
 <tr>
-    <td align="center"><a href="architecture/order-microservice-eda-view.md">Order - microservice and EDA view<br>
-        <img src="images/order-microservice-eda-view-primary.jpg" width="200"><img src="images/order-microservice-eda-view-sd.jpg" width="200"></a>
+    <td align="center"><a href="architecture/tbd-view.md">TBD - view<br>
+        <img src="images/tbd.png" width="200"></a>
     </td>
-    <td align="center" valign="middle"><a href="architecture/customer-pickup-microservice-eda-view.md">Customer at pick-up location - microservice and EDA view<br>
-        <img src="images/customer-pickup-microservice-view-primary.jpg" width="200"><img src="images/activity-diagram-for-customer-at-pick-up-location.png" width="200"></a>
+    <td align="center" valign="middle"><a href="architecture/tbd-view.md">TBD - view<br>
+        <img src="images/tbd.png" width="200"></a>
     </td>
 </tr>
 <tr>
