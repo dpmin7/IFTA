@@ -61,7 +61,8 @@ This architecture view describes how the Intelligent Flight Tracking Assistant s
 
 ### Sequence of Aircraft Alarm (Red #1-2):
 - `CPA` monitors aircraft position changes.
-- When criteria are met (e.g., collision risk), it sends alarm to `Views`.
+- When criteria are met (e.g., collision risk), it sends alarm to `Views`. the CPA computation sequence is as follows:
+  ![CPA Computation Diagram](../images/cpa-activity-diagram.png)
 
 ### Sequence of Map Tile Updating (Purple #1-2):
 - `User` select the map source in UI.
