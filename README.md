@@ -81,7 +81,7 @@ The linked ADRs below record the main architecture decisions regarding the propo
 - ADR 001 - [Use VBO method](ADRs/ADR001-maintain-multiple-copies-of-data.md)
 - ADR 002 - [Use ping/echo tactic](ADRs/ADR002-ping-echo.md)
 - ADR 003 - [Use C#/WPF envinronment](ADRs/ADR003-use-cs.md)
-- ADR 004 - [Use strategy pattern](ADRs/ADR004-strategy.md)
+- ADR 004 - [Use filter pattern](ADRs/ADR004-filter.md)
 - ADR 005 - [Use polling-based monitoring](ADRs/ADR005-polling.md)
 
 <sub>***Note***: we used [this ADR template](https://github.com/pmerson/ADR-template/blob/master/ADR-template.md).</sub>

@@ -77,7 +77,7 @@ This architecture view describes how the Intelligent Flight Tracking Assistant s
 - ADR 001 - [Use VBO method](../ADRs/ADR001-maintain-multiple-copies-of-data.md)
 - ADR 002 - [Use ping/echo tactic](../ADRs/ADR002-ping-echo.md)
 - ADR 003 - [Use C#/WPF envinronment](../ADRs/ADR003-use-cs.md)
-- ADR 004 - [Use strategy pattern](../ADRs/ADR004-strategy.md)
+- ADR 004 - [Use filter pattern](../ADRs/ADR004-filter.md)
 
 ## Related Views
 N/A
