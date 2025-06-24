@@ -16,16 +16,19 @@ Performing CPA computations between all aircraft regardless of their relative po
 We compared two alternative approaches to reduce computation:
 
 1. **Filtering aircraft that do not require CPA calculation**
-   - *Advantages*: Significantly reduces computation; high extensibility (can add various filters like range, altitude difference, region-based, etc.)
-   -  *Disadvantages*: If filter thresholds are too conservative, there's a risk of missing valid CPA cases.
+
+   - _Advantages_: Significantly reduces computation; high extensibility (can add various filters like range, altitude difference, region-based, etc.)
+   - _Disadvantages_: If filter thresholds are too conservative, there's a risk of missing valid CPA cases.
 
 2. **Computing CPA only for newly updated aircraft**
-   - *Advantages*: Reduces computations when updates are sparse.
-   -  *Disadvantages*: If many aircraft update simultaneously, CPA must be calculated between updated aircraft and all others, potentially leading to more computations than filtered approach. Also, risk of missing mutual CPA between updated aircraft unless handled carefully.
+   - _Advantages_: Reduces computations when updates are sparse.
+   - _Disadvantages_: If many aircraft update simultaneously, CPA must be calculated between updated aircraft and all others, potentially leading to more computations than filtered approach. Also, risk of missing mutual CPA between updated aircraft unless handled carefully.
 
-Given these trade-offs, the filter-based approach provides a **more consistent and scalable** solution for both periodic and real-time CPA computation.
+Given these trade-offs, the filter-based approach provides a **more consistent and scalable** solution for both periodic and real-time CPA computation.  
+This decision was derived from the results of [**technical-experiment4**](https://github.com/dpmin7/technical-experiment/blob/L5/experiment4/experiment4.md).
 
 ## Status
+
 Proposed
 
 ## Consequences
