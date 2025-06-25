@@ -4,13 +4,19 @@ This architecture view describes how the Intelligent Flight Tracking Assistant s
 
 ![MVC Architecture C&C Diagram](../images/mvc-architecture-primary.png)
 
+The class diagram is as follows:
+![MVC Architecture Class Diagram](../images/mvc-architecture-class.png)
+
 ## Element Catalog
 
-#### Aircraft Manager- Receives SBS or raw aircraft data from connectors.
+### ***Model***
+
+#### Aircraft Manager
+- Receives SBS or raw aircraft data from connectors.
 - Invokes the appropriate parser (e.g., SBS Format Parser or Raw Format Parser) based on the data format.
 - Updates the internal aircraft table with the parsed result.
 - Notifies listeners (e.g., Views) on every update.
-  - Although `Views` can receive update notifications, actual rendering is triggered by the `Main View` itself periodically querying the aircraft table.
+  - Although `Views` can receive update notifications, actual rendering is triggered by the `MainView` itself periodically querying the aircraft table.
   - This design choice is driven by performance and UI responsiveness concerns. See [ADR-001](../ADRs/ADR001-maintain-multiple-copies-of-data.md) for details.
 
 #### TCP Connector
@@ -18,30 +24,81 @@ This architecture view describes how the Intelligent Flight Tracking Assistant s
 - Receives SBS-formatted or raw aircraft messages.
 - Forwards data to aircraft manager.
 
-#### TCP-File Connector
+#### BigQuery Connector
 - Loads and parses historical aircraft data from sources such as BigQuery.
 - Acts as a secondary input source for Aircraft Manager.
+
+#### PingEcho
+- Periodically attempt to reconnect when the ADS-B Hub or RPi Flight Tracker connection is lost.
 
 #### SBS Format Parser / Raw Format Parser
 - Decodes incoming ADS-B strings into structured data.
 - Supports multiple input formats for extensibility.
 
-#### CPA / pointInPolygon / etc
+#### CPA(Closest Point of Approach) / pointInPolygon / etc
 - Computational threads that run background analysis (e.g., proximity, zone alerting).
 - Periodically query Aircraft Manager and respond to changes (every 333ms).
 
-#### Views
-- UI components that display aircraft positions and alerts on screen.
-- Periodically query Aircraft Manager and respond to changes (every 333ms).
-
-#### MainView Handler
-- Mediates user interaction (e.g., aircraft data source selection, map source selection).
-
-#### Map Manager
+#### TileManager
 - Requests and manages map tiles from external sources.
 - Supplies updated visual maps to the View layer.
 
-#### External Servers
+#### GoogleMap
+- Implements the `MapProvider` interface using Google Maps as the backend.
+
+#### SkyVector
+- Implements the `MapProvider` interface using SkyVector aviation maps.
+
+#### OpenStreet
+- Implements the `MapProvider` interface using OpenStreetMap data.
+
+#### AircraftMetadata
+- Stores static metadata about aircraft.
+
+#### AirportMetadata
+- Stores static metadata about airports.
+
+#### TriangularPoly
+- A data structure that stores polygon shapes, typically used when users define custom areas on the map.
+
+#### Area  
+- Represents a user-defined area on the map, composed of one or more polygons (`TriangularPoly`).
+
+### ***View***
+
+#### MainView
+- UI components that display aircraft positions and alerts on screen.
+- Periodically query Aircraft Manager and respond to changes (every 333ms).
+
+#### GLWpfControlExtensions  
+- Extensions that enable OpenGL rendering within a WPF (Windows Presentation Foundation) environment.
+
+#### AreaPopup
+- A popup window that appears after the user finishes drawing a polygon area on the map. It allows the user to input metadata such as the area name.
+
+#### Ntds2d  
+- A module responsible for rendering aircraft and airport icons using OpenGL in a 2D context.
+
+### ***Controller***
+
+#### MainViewHandler
+- Mediates user interaction (e.g., aircraft data source selection, map source selection).
+
+#### AreaPopupController  
+- The controller that manages logic related to the `AreaPopup`, such as capturing user input and updating the model accordingly.
+
+### ***Interfaces***
+
+#### IConnector
+- Defines a common interface for data connectors. Allows flexible integration of various data sources.
+
+#### IParser
+- Defines a contract for data parsers that interpret different input data formats such as SBS or RAW format..
+
+#### MapProvider
+- Interface for pluggable map data providers.
+
+### ***External Servers***
 - **Google Map Server / OpenStreetMap Server**: Provide background map imagery.
 - **Google BigQuery Server**: Source of CSV aircraft data.
 - **ADSB-Hub / ADSB-Local Server**: Live SBS aircraft feed.
