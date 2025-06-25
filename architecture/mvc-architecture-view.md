@@ -122,8 +122,9 @@ The class diagram is as follows:
 ### Sequence of Aircraft Alarm (Red #1-2):
 - `CPA` monitors aircraft position changes.
 - When criteria are met (e.g., collision risk), it sends alarm to `Views`
-  - The CPA computation sequence is as follows:
-  ![CPA Computation Diagram](../images/cpa-activity-diagram.png)
+  - Trigger a collision risk alert if two aircraft come within 1nm of each other within the next 30 seconds.
+  - The CPA computation workflow is as follows:
+  ![CPA Computation Diagram](../images/cpa-workflow-diagram.png)
 
 ### Sequence of Map Tile Updating (Purple #1-2):
 - `User` select the map source in UI.

@@ -53,8 +53,8 @@ altogether correspond to the main capabilities provided by the Intelligent Fligh
     <td align="center" valign="middle"><a href="architecture/mvc-architecture-view.md#sequence-of-aircraft-tracking-green-1-7-in-diagram">Graphic rendering sequence diagram<br>
         <img src="images/rendering-sequence-diagram.png" width="200"></a>
     </td>
-    <td align="center" valign="middle"><a href="architecture/mvc-architecture-view.md#sequence-of-aircraft-alarm-red-1-2">CPA computation activity diagram<br>
-        <img src="images/cpa-activity-diagram.png" width="200"></a>
+    <td align="center" valign="middle"><a href="architecture/mvc-architecture-view.md#sequence-of-aircraft-alarm-red-1-2">CPA computation workflow diagram<br>
+        <img src="images/cpa-workflow-diagram.png" width="200"></a>
     </td>
 </tr>
 <tr>
