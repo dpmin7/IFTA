@@ -41,19 +41,19 @@ altogether correspond to the main capabilities provided by the Intelligent Fligh
 <table>
 <tr>
     <td colspan="3" align="center">
-        <a href="architecture/mvc-architecture-view.md">Aircraft Tracking RUI - MVC architecture style C&C view<br>
+        <a href="architecture/mvc-architecture-cnc-view.md">Aircraft Tracking RUI - MVC architecture style C&C view<br>
         <img src="images/mvc-architecture-primary.png" width="200">
         </a>
     </td>
 </tr>
 <tr>
-    <td align="center"><a href="architecture/mvc-architecture-view.md#sequence-of-aircraft-tracking-green-1-7-in-diagram">TCP connection recovery sequence diagram<br>
+    <td align="center"><a href="architecture/mvc-architecture-cnc-view.md#sequence-of-aircraft-tracking-green-1-7-in-diagram">TCP connection recovery sequence diagram<br>
         <img src="images/tcp-connection-sequence-diagram.png" width="200"></a>
     </td>
-    <td align="center" valign="middle"><a href="architecture/mvc-architecture-view.md#sequence-of-aircraft-tracking-green-1-7-in-diagram">Graphic rendering sequence diagram<br>
+    <td align="center" valign="middle"><a href="architecture/mvc-architecture-cnc-view.md#sequence-of-aircraft-tracking-green-1-7-in-diagram">Graphic rendering sequence diagram<br>
         <img src="images/rendering-sequence-diagram.png" width="200"></a>
     </td>
-    <td align="center" valign="middle"><a href="architecture/mvc-architecture-view.md#sequence-of-aircraft-alarm-red-1-2">CPA computation workflow diagram<br>
+    <td align="center" valign="middle"><a href="architecture/mvc-architecture--cnc-view.md#sequence-of-aircraft-alarm-red-1-2">CPA computation workflow diagram<br>
         <img src="images/cpa-workflow-diagram.png" width="200"></a>
     </td>
 </tr>

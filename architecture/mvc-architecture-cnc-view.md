@@ -1,17 +1,14 @@
 # MVC Architecture Style C&C View of the Intelligent Flight Tracking Assistant
 
-This architecture view describes how the Intelligent Flight Tracking Assistant system applies the Model-View-Controller (MVC) pattern to render aircraft and map information to users. It highlights the separation of concerns among internal components responsible for the data model, control logic, and user interface. The view illustrates how user interactions trigger updates to aircraft and map data and how these changes propagate through the system in real time.
+This architecture view describes how the Intelligent Flight Tracking Assistant system applies the Model-View-Controller (MVC) pattern to render aircraft and map information to users. It highlights the separation of concerns among internal components responsible for the data model, control logic, and user interface. The view illustrates how user interactions trigger updates to aircraft and map data and how these changes propagate through the system in real time. By completely separating the GUI from the application logic, the system achieves significantly improved user responsiveness compared to legacy programs that were designed around a DisplayGUI-centric architecture.
 
-![MVC Architecture C&C Diagram](../images/mvc-architecture-primary.png)
-
-The class diagram is as follows:
-![MVC Architecture Class Diagram](../images/mvc-architecture-class.png)
+![MVC Architecture C&C View](../images/mvc-architecture-primary.png)
 
 ## Element Catalog
 
 ### ***Model***
 
-#### Aircraft Manager
+#### `Aircraft Manager`
 - Receives SBS or raw aircraft data from connectors.
 - Invokes the appropriate parser (e.g., SBS Format Parser or Raw Format Parser) based on the data format.
 - Updates the internal aircraft table with the parsed result.
@@ -19,84 +16,50 @@ The class diagram is as follows:
   - Although `Views` can receive update notifications, actual rendering is triggered by the `MainView` itself periodically querying the aircraft table.
   - This design choice is driven by performance and UI responsiveness concerns. See [ADR-001](../ADRs/ADR001-maintain-multiple-copies-of-data.md) for details.
 
-#### TCP Connector
+#### `Aircraft`
+- A structure containing flight information.
+- All received information is stored in memory as a table and managed by `AircraftManager`.
+
+#### `TCP Connector`
 - Connects to ADS-B data sources (e.g., RPi Flight Tracker, ADSB-Hub).
 - Receives SBS-formatted or raw aircraft messages.
 - Forwards data to aircraft manager.
 
-#### BigQuery Connector
+#### `BigQuery Connector`
 - Loads and parses historical aircraft data from sources such as BigQuery.
 - Acts as a secondary input source for Aircraft Manager.
 
-#### PingEcho
-- Periodically attempt to reconnect when the ADS-B Hub or RPi Flight Tracker connection is lost.
-
-#### SBS Format Parser / Raw Format Parser
+#### `SBS Format Parser / Raw Format Parser`
 - Decodes incoming ADS-B strings into structured data.
 - Supports multiple input formats for extensibility.
 
-#### CPA(Closest Point of Approach) / pointInPolygon / etc
+#### `CPA(Closest Point of Approach) / pointInPolygon / etc`
 - Computational threads that run background analysis (e.g., proximity, zone alerting).
 - Periodically query Aircraft Manager and respond to changes (every 333ms).
 
-#### TileManager
+#### `TileManager`
 - Requests and manages map tiles from external sources.
 - Supplies updated visual maps to the View layer.
 
-#### GoogleMap
-- Implements the `MapProvider` interface using Google Maps as the backend.
+#### `GoogleMap`
+- Google maps as the backend.
 
-#### SkyVector
-- Implements the `MapProvider` interface using SkyVector aviation maps.
+#### `SkyVector`
+- SkyVector aviation maps as backend.
 
-#### OpenStreet
-- Implements the `MapProvider` interface using OpenStreetMap data.
-
-#### AircraftMetadata
-- Stores static metadata about aircraft.
-
-#### AirportMetadata
-- Stores static metadata about airports.
-
-#### TriangularPoly
-- A data structure that stores polygon shapes, typically used when users define custom areas on the map.
-
-#### Area  
-- Represents a user-defined area on the map, composed of one or more polygons (`TriangularPoly`).
+#### `OpenStreet`
+- OpenStreet maps as backend.
 
 ### ***View***
 
-#### MainView
+#### `MainView`
 - UI components that display aircraft positions and alerts on screen.
 - Periodically query Aircraft Manager and respond to changes (every 333ms).
 
-#### GLWpfControlExtensions  
-- Extensions that enable OpenGL rendering within a WPF (Windows Presentation Foundation) environment.
-
-#### AreaPopup
-- A popup window that appears after the user finishes drawing a polygon area on the map. It allows the user to input metadata such as the area name.
-
-#### Ntds2d  
-- A module responsible for rendering aircraft and airport icons using OpenGL in a 2D context.
-
 ### ***Controller***
 
-#### MainViewHandler
+#### `MainViewHandler`
 - Mediates user interaction (e.g., aircraft data source selection, map source selection).
-
-#### AreaPopupController  
-- The controller that manages logic related to the `AreaPopup`, such as capturing user input and updating the model accordingly.
-
-### ***Interfaces***
-
-#### IConnector
-- Defines a common interface for data connectors. Allows flexible integration of various data sources.
-
-#### IParser
-- Defines a contract for data parsers that interpret different input data formats such as SBS or RAW format..
-
-#### MapProvider
-- Interface for pluggable map data providers.
 
 ### ***External Servers***
 - **Google Map Server / OpenStreetMap Server**: Provide background map imagery.
@@ -124,7 +87,7 @@ The class diagram is as follows:
 - When criteria are met (e.g., collision risk), it sends alarm to `Views`
   - Trigger a collision risk alert if two aircraft come within 1nm of each other within the next 30 seconds.
   - The CPA computation workflow is as follows:
-  ![CPA Computation Diagram](../images/cpa-workflow-diagram.png)
+  ![CPA Computation Workflow](../images/cpa-workflow-diagram.png)
 
 ### Sequence of Map Tile Updating (Purple #1-2):
 - `User` select the map source in UI.
@@ -138,4 +101,4 @@ The class diagram is as follows:
 - ADR 004 - [Use filter pattern](../ADRs/ADR004-filter.md)
 
 ## Related Views
-N/A
+- [MVC-based class view](./mvc-architecture-class-view.md)
