@@ -19,23 +19,19 @@ This section contains the requirements, distilled from the [provided document #1
 but also with some assumptions we made. These requirements were the main drivers for the design decisions in this proposal.
 
 - [Functional requirements](requirements/functional-rqmts.md)
-- [Quality attribute requirements](requirements/quality-attribute-rqmts.md), aka architecture characteristics
+- [Quality attribute requirements](requirements/quality-attribute-rqmts.md) 
 
 ### Architecture
-
-Here you find the documentation of the software architecture that we envision to address Intelligent Flight Tracking Assistant's requirements. 
 
 As a starting point, there's a context diagram that gives an overview of the external elements that interact with 
 what we called the *Intelligent Flight Tracking Assistant*, which is the scope of this software architecture.
 
 <table>
 <tr><td align="center">Context Diagram<br>
-<img src="images/context-diagram.png" width="400"></td></tr>
+<img src="images/context-diagram.png" width="500"></td></tr>
 </table>
 
-The main part of the software architecture is the set of five *architecture views* seen below. These views provide a runtime 
-perspective of the system, that is, they show the components and connectors that have runtime presence and 
-altogether correspond to the main capabilities provided by the Intelligent Flight Tracking Assistant system.
+The main part of the software architecture is the set of four *architecture views* seen below. These views provide modules and runtime perspective of the system, that is, they show the components and connectors that have runtime presence and altogether correspond to the main capabilities provided by the Intelligent Flight Tracking Assistant system.
 
 
 <table>
@@ -58,6 +54,13 @@ altogether correspond to the main capabilities provided by the Intelligent Fligh
     </td>
 </tr>
 <tr>
+    <td colspan="3" align="center">
+        <a href="architecture/mvc-architecture-class-view.md">MVC architecture style class view<br>
+        <img src="images/mvc-architecture-class.png" width="200">
+        </a>
+    </td>
+</tr>
+<tr>
     <td colspan="3" align="center" valign="middle">
         <a href="architecture/resilient-sdr-monitoring-cnc-view.md">SDR system (a.k.a Flight Tracker) - Resilient SDR monitoring C&C view<br>
         <img src="images/flight-tracker-primary.png" width="200"><img src="images/flight-tracker-sequence.png" width="200">
@@ -77,6 +80,7 @@ Our architecture views were documented following a lightweight [view template av
 ### ADRs
 
 The linked ADRs below record the main architecture decisions regarding the proposed design, including their context and rationale.
+Each ADR may include links to relevant experiments from [technical-experiment repository](https://github.com/dpmin7/technical-experiment) that supports the architectural decision.
 
 - ADR 001 - [Use VBO method](ADRs/ADR001-maintain-multiple-copies-of-data.md)
 - ADR 002 - [Use ping/echo tactic](ADRs/ADR002-ping-echo.md)
@@ -85,7 +89,6 @@ The linked ADRs below record the main architecture decisions regarding the propo
 - ADR 005 - [Use polling-based monitoring](ADRs/ADR005-polling.md)
 
 <sub>***Note***: we used [this ADR template](https://github.com/pmerson/ADR-template/blob/master/ADR-template.md).</sub>
-
 
 --------------------------
 

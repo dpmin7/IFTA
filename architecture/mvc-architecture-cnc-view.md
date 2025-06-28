@@ -1,6 +1,6 @@
 # MVC Architecture Style C&C View of the Intelligent Flight Tracking Assistant
 
-This architecture view describes how the Intelligent Flight Tracking Assistant system applies the Model-View-Controller (MVC) pattern to render aircraft and map information to users. It highlights the separation of concerns among internal components responsible for the data model, control logic, and user interface. The view illustrates how user interactions trigger updates to aircraft and map data and how these changes propagate through the system in real time. By completely separating the GUI from the application logic, the system achieves significantly improved user responsiveness compared to legacy programs that were designed around a DisplayGUI-centric architecture.
+This architecture view describes how the Intelligent Flight Tracking Assistant system applies the Model-View-Controller (MVC) pattern to render aircraft and map information to users. It highlights the separation of concerns among internal components responsible for the data model, control logic, and user interface. The view illustrates how user interactions trigger updates to aircraft and map data and how these changes propagate through the system in real time. By completely separating the GUI from the application logic, the system achieves significantly improved `performance(user responsiveness)` compared to legacy programs that were designed around a DisplayGUI-centric architecture.
 
 ![MVC Architecture C&C View](../images/mvc-architecture-primary.png)
 
@@ -69,7 +69,7 @@ This architecture view describes how the Intelligent Flight Tracking Assistant s
 
 ## Behavior
 
-### Sequence of Aircraft Tracking (Green #1-7 in diagram):
+### Sequence of Aircraft Tracking (Green #1-7 in primary diagram):
 1. `User` click the connect button.
 2. `MainView Handler` triggers connection via `TCP Connector`.
   - The sequence for TCP reconnecting for resilient is as follows:
@@ -82,14 +82,14 @@ This architecture view describes how the Intelligent Flight Tracking Assistant s
   - The rendering sequence is as follows:
   ![Rendering Sequence Diagram](../images/rendering-sequence-diagram.png)
 
-### Sequence of Aircraft Alarm (Red #1-2):
+### Sequence of Aircraft Alarm (Red #1-2 in primary diagram):
 - `CPA` monitors aircraft position changes.
 - When criteria are met (e.g., collision risk), it sends alarm to `Views`
   - Trigger a collision risk alert if two aircraft come within 1nm of each other within the next 30 seconds.
   - The CPA computation workflow is as follows:
   ![CPA Computation Workflow](../images/cpa-workflow-diagram.png)
 
-### Sequence of Map Tile Updating (Purple #1-2):
+### Sequence of Map Tile Updating (Purple #1-2 in primary diagram):
 - `User` select the map source in UI.
 - `MainView Handler` selects map source.
 - `Map Manager` retrieves tiles from external servers periodically (500ms).

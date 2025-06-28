@@ -7,7 +7,7 @@ You will find the _actors_ we identified, and how they interact with the system 
 - SDR (Software Defined Rasio) system
 - ADS-B (Automatic Dependent Surveillance – Broadcast) Hub / Local system
 - Google BigQuery system
-- Google / OpenStreet Map Provider
+- Map Provider
 
 <br>
 
@@ -34,7 +34,7 @@ You will find the _actors_ we identified, and how they interact with the system 
 - Playback of stored data in local files or BigQuery
 
 ## Select Map
-- Switching between Google/VFR/IFR Map Modes 
+- Switching between Google/VFR/IFR/OpenStreet/ArcGIS Map Modes 
 - Map-based visualization of aircraft location with real-time updated map tile
 - Select various map providers
 
@@ -60,15 +60,11 @@ You will find the _actors_ we identified, and how they interact with the system 
 <br>
 
 # ***Map Provider***
-- Provide Google map tiles to client programs
-- Provide SkyVector map tiles to client programs
-    - 3 types of map is supported : VFS, IFR_Low, IFR_High
-- (Optional) Provide OpenStreet<sup>3</sup> map tiles to client programs
+- Provide map tiles to client programs
  
 <br>
 
 ### Notes
 <p><sup>1</sup>RUI is a native windows GUI application of Intelligent Flight Tracking Assistant system.</p>
 <p><sup>2</sup>SDR (Software Defined Radio) system (a.k.a Flight Tracker) is a linux server running on Raspberry Pi which gathers aircraft raw data and provides them.</p>
-<p><sup>3</sup>OpenStreet will be introduced for more map types
 

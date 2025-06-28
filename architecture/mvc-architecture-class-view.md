@@ -1,6 +1,6 @@
 # MVC-based Class View of the Intelligent Flight Tracking Assistant
 
-This architecture view provides a structural overview of a class-level design based on the Model-View-Controller (MVC) pattern. It illustrates the relationships among components responsible for rendering aircraft data, managing spatial and aircraft-related metadata, and supporting various map and connector integrations. The diagram helps identify how the system separates concerns between user interface rendering, data processing, and control logic. The use of interfaces significantly enhances modifiability, enabling the system to respond swiftly and flexibly to new or changing requirements.
+This architecture view provides a structural overview of a class-level design based on the Model-View-Controller (MVC) pattern. It illustrates the relationships among components responsible for rendering aircraft data, managing spatial and aircraft-related metadata, and supporting various map and connector integrations. The diagram helps identify how the system separates concerns between user interface rendering, data processing, and control logic. The use of interfaces significantly enhances `modifiability`, enabling the system to respond swiftly and flexibly to new or changing requirements.
 
 ![MVC Architecture Class VIew](../images/mvc-architecture-class.png)
 
@@ -35,12 +35,17 @@ This section provides the catalog of additional classes.
 
 #### `IConnector`
 - Interface for network or database communication.
-- Realized by `TCPConnector`, `BigQueryConnector`, etc.
+- Realized by `TCPConnector` and Generalized by `IDBConnector`, etc.
 - Used by `PingEcho` for connectivity monitoring.  
 
-#### `IAnalysisAircraft`
+#### `IDBConnector`
+- Interface for external database communication.
+- Realized by `BigQueryConnector`, etc.
+
+#### `ICPA`
 - Interface for performing analysis on aircraft data.
-- Realized by classes like `CPA` and `PointInPolygon`.
+- Realized by classes like `CPA`.
+  - CPA can be implemented in various languages such as C++ or C#, and is loaded as a DLL (runtime shared library).
 
 #### `IParser`
 - Interface for data parsers.
@@ -68,6 +73,7 @@ N/A
 ## Related ADRs
 - ADR 002 - [Use ping/echo tactic](../ADRs/ADR002-ping-echo.md)
 - ADR 003 - [Use C#/WPF envinronment](../ADRs/ADR003-use-cs.md)
+- ADR 004 - [Use filter pattern](../ADRs/ADR004-filter.md)
 
 ## Related Views
 - [MVC architectue C&C view](./mvc-architecture-cnc-view.md)

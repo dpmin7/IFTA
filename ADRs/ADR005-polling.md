@@ -17,7 +17,7 @@ We chose to use `systemd` instead of writing a custom init script for several re
 - It offers powerful features such as service dependency handling, watchdogs, and automatic restarts.
 - Compared to developing a custom init mechanism from scratch, configuring a `systemd` unit file allowed us to implement a robust and reliable boot-time sequence in significantly less time and with lower maintenance cost.
 
-This decision was derived from the results of [**technical-experiment5**](https://github.com/dpmin7/technical-experiment/blob/L5/experiment5/experiment5.md), in which we verified the behavior of `systemd`, `dump1090`, and `adsbhub.sh` under repeated SDR connection and disconnection scenarios. The experiment confirmed that integrating polling-based logic into a systemd-supervised environment significantly increased system resilience with minimal overhead.
+This decision was derived from the results of [*Experiment 5*](https://github.com/dpmin7/technical-experiment/blob/L5/experiment5/experiment5.md), in which we verified the behavior of `systemd`, `dump1090`, and `adsbhub.sh` under repeated SDR connection and disconnection scenarios. The experiment confirmed that integrating polling-based logic into a systemd-supervised environment significantly increased system resilience with minimal overhead.
 
 Alternative approaches considered:
 - **Relying solely on `Restart=always` in systemd**: Rejected because it blindly restarts the service even when the SDR hardware is disconnected, leading to repeated failures without resolution.

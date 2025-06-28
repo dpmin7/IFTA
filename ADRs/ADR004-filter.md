@@ -24,8 +24,7 @@ We compared two alternative approaches to reduce computation:
    - _Advantages_: Reduces computations when updates are sparse.
    - _Disadvantages_: If many aircraft update simultaneously, CPA must be calculated between updated aircraft and all others, potentially leading to more computations than filtered approach. Also, risk of missing mutual CPA between updated aircraft unless handled carefully.
 
-Given these trade-offs, the filter-based approach provides a **more consistent and scalable** solution for both periodic and real-time CPA computation.  
-This decision was derived from the results of [**technical-experiment4**](https://github.com/dpmin7/technical-experiment/blob/L5/experiment4/experiment4.md).
+Given these trade-offs, the filter-based approach provides a **more consistent and scalable** solution for both periodic and real-time CPA computation. This decision was derived from the results of [*Experiment 4*](https://github.com/dpmin7/technical-experiment/blob/L5/experiment4/experiment4.md).
 
 ## Status
 

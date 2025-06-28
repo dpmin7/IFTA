@@ -1,28 +1,28 @@
 # Resilient SDR Monitoring and Recovery C&C View  
-This view documents the runtime structure of the Raspberry Pi-based Flight Tracker system. It focuses on how the system ensures continuous SDR-based flight data capture and recovery from device-level faults using a polling-based monitoring strategy.
+This view documents the runtime structure of the Raspberry Pi-based Flight Tracker system. It focuses on how the system ensures continuous SDR-based flight data capture and recovery from device-level faults using a polling-based monitoring strategy. Through this, the Flight Tracker system could be made significantly more resilient, which in turn improves its `availability`.
 
 ![Runtime View - Resilient SDR Monitoring](../images/flight-tracker-primary.png)
 
 ## Element Catalog
 
-#### systemd
+#### `systemd`
 - Initializes and supervises `dump1090` and `adsbhub.sh`
 - Automatically restarts services on failure unless blocked by monitoring script
 
-#### dump1090
+#### `dump1090`
 - Binary program that captures ADS-B signals from the SDR device
 - Runs continuously once the SDR is available
 
-#### adsbhub.sh
+#### `adsbhub.sh`
 - Shell script that feeds captured ADS-B data to an external hub or aggregator
 - Depends on dump1090 being operational
 
-#### sdrmonitor.sh
+#### `sdrmonitor.sh`
 - Shell script running in a polling loop
 - Checks SDR presence using `lsusb`
 - Issues `kill` to stop services if SDR is disconnected
 
-#### SDR (RTL2832U)
+#### `SDR (RTL2832U)`
 - USB-based Software Defined Radio dongle
 - May disconnect unpredictably due to hardware issues
 

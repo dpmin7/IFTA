@@ -24,7 +24,7 @@ Furthermore, by rendering at a **fixed rate** rather than on every object update
 - It is compatible with OpenGL 2.x (our current implementation level), so no additional technical review or OpenGL upgrade is required.
 - Periodic rendering ensures consistent performance regardless of object update frequency, and avoids overloading the rendering thread.
 
-This decision is based on the results of technical-experiment1, where we evaluated the performance of different rendering strategies.
+This decision was derived from the results of [*Experiment 1*](https://github.com/dpmin7/technical-experiment/blob/L5/experiment1/experiment1.md), where we evaluated the performance of different rendering strategies.
 The experiment confirmed that the caching-based rendering approach combined with fixed-rate rendering resulted in a meaningful performance improvement.
 
 **Rejected alternatives and rationale:**

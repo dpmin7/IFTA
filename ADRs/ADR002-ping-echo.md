@@ -1,4 +1,4 @@
-# ADR 002: Use TCP-Based Connection Checks for Network Disconnection Detection and Recovery
+# ADR 002: Use TCP-Based Connection Checks for Network Disconnection Detection and Recovery for RUI
 Our system must maintain high availability and recoverability in environments where network connections may be intermittently lost. Monitoring network status is critical for triggering user notifications, initiating failover logic, and restarting critical components like ADS-B data feeds.
 
 The initial approach was to use ICMP echo requests (ping) to detect network availability, due to its simplicity and ubiquity. However, during testing, we discovered that the ADS-B server did not respond to ICMP requests even it's alive, making this method unreliable in our target deployment environment.
@@ -13,7 +13,7 @@ We will adopt a TCP connection attempt-based mechanism for monitoring network av
 - ICMP-based monitoring will not be used, as the target ADS-B servers do not reliably respond to echo requests.
 
 ## Rationale
-Although ICMP-based detection was initially considered for its lightweight nature, testing showed that the ADS-B server did not respond to ICMP packets, making this approach infeasible.
+Although ICMP-based detection was initially considered for its lightweight nature, testing showed that the ADS-B server did not respond to ICMP packets, making this approach infeasible. This decision was derived from the results of [*Experiment 2*](https://github.com/dpmin7/technical-experiment/blob/L5/experiment2/experiment2.md)
 
 TCP connection attempts proved to be effective in detecting both disconnection and successful recovery:
 - **Internet disconnection/recovery detection** succeeded in all 50 out of 50 test cases.
