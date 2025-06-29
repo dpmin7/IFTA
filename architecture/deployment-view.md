@@ -6,30 +6,35 @@ This Deployment View describes how the Intelligent Flight Tracking Assistant sys
 
 ## Element Catalog
 
-#### Window PC
+#### `Window PC`
 - Hosts the **RUI**, which provides graphical visualization and alarm display.
 - Deploys the `ADS-B-Display.exe`.
 - Connects to various servers (ADS-B, BigQuery, Raspberry Pi) via TCP.
 
-#### RUI
+#### `RUI`
 - Core of the user interface and visualization logic.
-- Pulls parsed aircraft data over TCP.
+- Pulls SBS or raw data over TCP.
 - Periodically renders views from cached data. (see [ADR-001](../ADRs/ADR001-maintain-multiple-copies-of-data.md))
 
-#### Raspberry Pi (Flight Tracker)
+#### `Raspberry Pi (Flight Tracker)`
 - Edge device responsible for receiving raw ADS-B signals via SDR (Software Defined Radio).
 - Deploys the following artifacts:
   - `dump1090{.service}`: Low-level SDR ADS-B decoder.
   - `adsbhub.{sh,service}`: Forwards data to hub/local servers.
   - `sdrmonitor.{sh,service}`: Monitors SDR hardware availability and restarts services if needed. (see [ADR-005](../ADRs/ADR005-polling.md))
+- As long as there is an Internet connection via Ethernet or Wi-Fi, it communicates with RUI over TCP.
 
-#### ADS-B Hub/Local Server 
+#### `ADS-B Hub/Local Server`
 - Public or cloud-based server that aggregates and redistributes aircraft tracking feeds in SBS format.
 - Communicates with RUI over TCP.
 
-#### Google BigQuery Server
+#### `Google BigQuery Server`
 - Provides historical aircraft position datasets (e.g., CSVs).
 - Queried on demand via TCP by RUI’s file connector module.
+
+#### `Map Provider`
+- Provides map tiles.
+- There are map providers such as Google Maps, OpenStreetMap, and ArcGIS Map.
 
 ## Behavior
 N/A
@@ -39,6 +44,6 @@ N/A
 - ADR 005 - [Use polling-based monitoring](../ADRs/ADR005-polling.md)
 
 ## Related Views
-- [MVC Architecture View of the Intelligent Flight Tracking Assistant](./mvc-architecture-view.md)
-- [Resilient SDR Monitoring and Recovery View](./resilient-sdr-monitoring-and-recovery-view.md)
+- [MVC Architecture style C&C View of the Intelligent Flight Tracking Assistant](./mvc-architecture-view.md)
+- [Resilient SDR Monitoring C&C View](./resilient-sdr-monitoring-and-recovery-view.md)
 
