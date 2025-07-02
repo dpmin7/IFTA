@@ -33,22 +33,13 @@ This architecture view describes how the Intelligent Flight Tracking Assistant s
 - Decodes incoming ADS-B strings into structured data.
 - Supports multiple input formats for extensibility.
 
-#### `CPA(Closest Point of Approach) / pointInPolygon / etc`
+#### `CPA(Closest Point of Approach) / etc`
 - Computational threads that run background analysis (e.g., proximity, zone alerting).
 - Periodically query Aircraft Manager and respond to changes (every 333ms).
 
 #### `TileManager`
 - Requests and manages map tiles from external sources.
 - Supplies updated visual maps to the View layer.
-
-#### `GoogleMap`
-- Google maps as the backend.
-
-#### `SkyVector`
-- SkyVector aviation maps as backend.
-
-#### `OpenStreet`
-- OpenStreet maps as backend.
 
 ### ***View***
 
@@ -83,7 +74,7 @@ This architecture view describes how the Intelligent Flight Tracking Assistant s
   ![Rendering Sequence Diagram](../images/rendering-sequence-diagram.png)
 
 ### Sequence of Aircraft Alarm (Red #1-2 in primary diagram):
-- `CPA` monitors aircraft position changes.
+- `CollisionRiskWorker` monitors aircraft position changes.
 - When criteria are met (e.g., collision risk), it sends alarm to `Views`
   - Trigger a collision risk alert if two aircraft come within 1nm of each other within the next 30 seconds.
   - The CPA computation workflow is as follows:

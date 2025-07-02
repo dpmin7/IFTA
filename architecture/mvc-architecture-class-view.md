@@ -20,32 +20,27 @@ This section provides the catalog of additional classes.
 #### `AirportMetadata`
 - Stores static metadata about airports.
 
-#### `TriangularPoly`
-- A data structure that stores polygon shapes, typically used when users define custom areas on the map.
+#### `PointInPolygon`
+- It checks whether an aircraft is inside a specific polygon and returns the result.
 
-#### `Area`
-- Represents a geographical region defined by the user.  
-- Uses `TriangularPoly` for geometric definition.  
-- Interacts with `AircraftManager` for region-based filtering or monitoring.
+#### `GoogleMap`
+- Gets Google map tiles as the backend via REST API.
+
+#### `ArcGIS`
+- Gets ArcGIS map tiles as backend via REST API.
+
+#### `OpenStreet`
+- Gets OpenStreet map tiles as backend via REST API.
 
 #### `IMAPProvider`
 - Interface for different map providers.
-- Realized by `GoogleMap`, `SkyVector`, and `OpenStreet`.
+- Realized by `GoogleMap`, `OpenStreet` and `ArcGIS`.
 - Used by `TileManager` to manage map tile rendering.
 
 #### `IConnector`
 - Interface for network or database communication.
 - Realized by `TCPConnector` and Generalized by `IDBConnector`, etc.
 - Used by `PingEcho` for connectivity monitoring.  
-
-#### `IDBConnector`
-- Interface for external database communication.
-- Realized by `BigQueryConnector`, etc.
-
-#### `ICPA`
-- Interface for performing analysis on aircraft data.
-- Realized by classes like `CPA`.
-  - CPA can be implemented in various languages such as C++ or C#, and is loaded as a DLL (runtime shared library).
 
 #### `IParser`
 - Interface for data parsers.
