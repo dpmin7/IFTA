@@ -13,9 +13,14 @@ This view documents the runtime structure of the Raspberry Pi-based Flight Track
 - Binary program that captures ADS-B signals from the SDR device
 - Runs continuously once the SDR is available
 
+#### RUI Program
+- Windows GUI program
+- Connects to dump1090 via TCP connection and get captured ADS-B data
+
 #### `adsbhub.sh`
 - Shell script that feeds captured ADS-B data to an external hub or aggregator
 - Depends on dump1090 being operational
+- Connects external hub via TCP connection
 
 #### `sdrmonitor.sh`
 - Shell script running in a polling loop
