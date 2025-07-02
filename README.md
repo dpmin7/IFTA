@@ -43,13 +43,13 @@ The main part of the software architecture is the set of four *architecture view
     </td>
 </tr>
 <tr>
-    <td align="center"><a href="architecture/mvc-architecture-cnc-view.md#sequence-of-aircraft-tracking-green-1-7-in-diagram">TCP connection recovery sequence diagram<br>
+    <td align="center"><a href="architecture/mvc-architecture-cnc-view.md#sequence-of-aircraft-tracking-green-1-7-in-primary-diagram">TCP connection recovery sequence diagram<br>
         <img src="images/tcp-connection-sequence-diagram.png" width="200"></a>
     </td>
-    <td align="center" valign="middle"><a href="architecture/mvc-architecture-cnc-view.md#sequence-of-aircraft-tracking-green-1-7-in-diagram">Graphic rendering sequence diagram<br>
+    <td align="center" valign="middle"><a href="architecture/mvc-architecture-cnc-view.md#sequence-of-aircraft-tracking-green-1-7-in-primary-diagram">Graphic rendering sequence diagram<br>
         <img src="images/rendering-sequence-diagram.png" width="200"></a>
     </td>
-    <td align="center" valign="middle"><a href="architecture/mvc-architecture--cnc-view.md#sequence-of-aircraft-alarm-red-1-2">CPA computation workflow diagram<br>
+    <td align="center" valign="middle"><a href="architecture/mvc-architecture-cnc-view.md#sequence-of-aircraft-tracking-green-1-7-in-primary-diagram">CPA computation workflow diagram<br>
         <img src="images/cpa-workflow-diagram.png" width="200"></a>
     </td>
 </tr>
